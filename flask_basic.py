@@ -14,7 +14,7 @@ def login():
     if __name__ =="__main__":
         app.run(host='0.0.0.0',port='8082')
 
-@app.route('/test')
+@app.route('/test2')
 def test():
     return 'test'
 
