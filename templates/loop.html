@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% for value in values%}
+    <li>{{value}}</li>
+    {%endfor%}
+    <ul>
+        {% for index in range(values|length)%}
+        <li>{{values[index]}},{{loop.index}}</li> <!-- loop.index 는 1번부터 시작함-->
+        {%endfor%} {# jinja템플릿에서 각주 쓰는 방법 #}
+    </ul>
+</body>
+</html>

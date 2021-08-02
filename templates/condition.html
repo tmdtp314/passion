@@ -7,8 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello {{name1}}</h1>
-    <h2>{{name2}}</h2>
-    <h1>안녕하세요</h1>
+    {% if data >=30 %}
+    <h3>30보다 큽니다.</h3>
+    {%elif data > 25%}
+    <h3>25보다 큽니다.</h3>
+    {%else%}
+    <h3>{{data}}</h3>
+    {%endif%}
 </body>
 </html>
