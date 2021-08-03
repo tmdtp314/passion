@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    
+   
+
+    <div id="app"> <!-- id값은 바꿀 수 있다. -->
+      <center>
+      <button type="button" class="btn btn-primary" v-on:click="test_get">GET</button> <!--axios_test : 함수이름-->
+      <button type="button" class="btn btn-secondary" v-on:click="test_post">POST</button>
+      <button type="button" class="btn btn-success" v-on:click="test_put">PUT</button>
+      <button type="button" class="btn btn-danger" v-on:click="test_delete">DELETE</button>
+      </center>
+    </div>
+
+
+
+   
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+     
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+  
+
+    <!--Vue라는 프레임워크를 쓰기 위해-->
+    <!-- axios는 통신이 가능하게 하는 라이브러리이다. -->
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- 여기서부터는 vue 쓰는 곳, javascript 이다. -->
+     <script>
+       const app = new Vue({
+         el:"#app", // id 값을 임의로 바꿀 수 있다. 
+         methods:{
+           test_get:()=>{ // 자바스크립트 함수
+             axios("http://localhost:5000/test",{ //호출할 백엔드 주소 flask_test.py를 호출한다. (여기에 라우팅 경로가 정의되어있음)
+               method:"get",
+               params:{
+                   email:"test1234@naver.com"
+               },
+             }).then((response)=>{
+               console.log(response.data["status"]); //호출 결과를 가져온다
+             })
+             .catch((error)=>{ //에러 발생시 
+               console.log(error);
+             });
+           },
+           test_post:()=>{
+            axios("http://localhost:5000/test",{ //호출할 백엔드 주소 flask_test.py를 호출한다. (여기에 라우팅 경로가 정의되어있음)
+                method:"post",
+                data:{
+                    email:"test1234@naver.com"
+                },
+              }).then((response)=>{
+                console.log(response.data["status"]); //호출 결과를 가져온다
+              })
+              .catch((error)=>{ //에러 발생시 
+                console.log(error);
+              });
+           },
+           test_put:()=>{
+            axios("http://localhost:5000/test",{ //호출할 백엔드 주소 flask_test.py를 호출한다. (여기에 라우팅 경로가 정의되어있음)
+                method:"put",
+                params:{
+                    email:"test1234@naver.com"
+                },
+              }).then((response)=>{
+                console.log(response.data["status"]); //호출 결과를 가져온다
+              })
+              .catch((error)=>{ //에러 발생시 
+                console.log(error);
+              }); 
+           },
+           test_delete:()=>{
+            axios("http://localhost:5000/test",{ //호출할 백엔드 주소 flask_test.py를 호출한다. (여기에 라우팅 경로가 정의되어있음)
+                method:"delete",
+                params:{
+                    email:"test1234@naver.com"
+                },
+              }).then((response)=>{
+                console.log(response.data["status"]); //호출 결과를 가져온다
+              })
+              .catch((error)=>{ //에러 발생시 
+                console.log(error);
+              }); 
+           },
+         },
+       });
+
+
+     </script>
+  </body>
+</html>
