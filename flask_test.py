@@ -10,5 +10,6 @@ def test():
     return make_response(jsonify(success=True),200) #http 응답 코드(성공 시 코드)
 
 
+
 if __name__=='__main__':
     app.run(host="0.0.0.0",port="8082")

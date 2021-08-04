@@ -3,6 +3,7 @@ app = Flask(__name__,static_url_path='/static') # static_url_path 옵션으로 s
                                                 # brand / dist 같은 폴더는 애초 다운받은 부트스트랩에 저장된 폴더들이다. 
                                                 # 이 render_template 프레임워크(?)에서 중요한 것은 static이라는 폴더와 templates라는 폴더가 존재해야한다는 것이다.
 
+
 @app.route('/login')
 def login():
     email = request.args.get('email') # get방식1                                           # java의 변수 = request.getParameter('파라미터명')
